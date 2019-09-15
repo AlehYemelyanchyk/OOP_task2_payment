@@ -1,3 +1,5 @@
+package by.epam.ayem.module5;
+
 /*Задача 2.
 Создать класс Payment с внутренним классом, с помощью объектов которого можно сформировать покупку
 из нескольких товаров.*/
@@ -19,10 +21,13 @@ public class Payment {
 
     public void showBasket() {
         int number = 1;
+        double price = 0;
         for (Goods item : goods) {
             System.out.println(number + item.toString());
             number++;
+            price += (item.priceForUnit * item.amount);
         }
+        System.out.println("Total price = " + price);
     }
 
     public class Goods {
@@ -41,7 +46,8 @@ public class Payment {
 
         @Override
         public String toString() {
-            return ". " + name + ", " + amount + " " + units.getUnits() + ". For payment: " + (priceForUnit * amount) + ".";
+            return ". " + name + ", " + amount + " " + units.getUnits() + ". " +
+                    "For payment: " + (priceForUnit * amount) + ".";
         }
     }
 
